@@ -47,10 +47,6 @@ augroup MyAutoCmd
   autocmd!
 augroup END
 
-if filereadable(expand('~/.secret_vimrc'))
-  execute 'source' expand('~/.secret_vimrc')
-endif
-
 let s:neobundle_dir = expand('$CACHE/neobundle')
 
 if has('vim_starting') "{{{

@@ -92,22 +92,6 @@ endif
 "}}}
 
 "---------------------------------------------------------------------------
-" Input Japanese:"{{{
-" For Linux
-if (has('multi_byte_ime') || has('xim')) && has('GUI_GTK')
-  " Disable uim when use skk.vim.
-  let &imdisable=1
-
-  " To use uim-anthy.
-  "let $GTK_IM_MODULE='uim-anthy'
-  "set imactivatekey=C-space
-
-  " To use ibus-mozc/fcitx.
-  let $GTK_IM_MODULE='xim'
-endif
-"}}}
-
-"---------------------------------------------------------------------------
 " Mouse:"{{{
 "
 set mousemodel=extend

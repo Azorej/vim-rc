@@ -2,9 +2,6 @@
 " FileType:
 "
 
-" Enable smart indent.
-set autoindent smartindent
-
 augroup MyAutoCmd
   autocmd FileType,Syntax * call s:my_on_filetype()
 

@@ -165,9 +165,6 @@ NeoBundleLazy 'tsukkee/unite-tag'
 NeoBundleLazy 'tyru/caw.vim', {
       \ 'mappings' : '<Plug>'
       \ }
-NeoBundleLazy 'tyru/eskk.vim', {
-      \ 'mappings' : [['i', '<Plug>']],
-      \ }
 NeoBundleLazy 'tyru/open-browser.vim', {
       \ 'mappings' : '<Plug>',
       \ }

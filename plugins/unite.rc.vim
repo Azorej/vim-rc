@@ -10,13 +10,8 @@ let g:unite_source_menu_menus.enc = {
       \ }
 let g:unite_source_menu_menus.enc.command_candidates = [
       \       ['utf8', 'Utf8'],
-      \       ['iso2022jp', 'Iso2022jp'],
-      \       ['cp932', 'Cp932'],
-      \       ['euc', 'Euc'],
       \       ['utf16', 'Utf16'],
       \       ['utf16-be', 'Utf16be'],
-      \       ['jis', 'Jis'],
-      \       ['sjis', 'Sjis'],
       \       ['unicode', 'Unicode'],
       \     ]
 

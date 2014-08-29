@@ -6,12 +6,6 @@
 nmap <C-Space>  <C-@>
 cmap <C-Space>  <C-@>
 
-" Visual mode keymappings: "{{{
-" <TAB>: indent.
-xnoremap <TAB>  >
-" <S-TAB>: unindent.
-xnoremap <S-TAB>  <
-
 " Indent
 nnoremap > >>
 nnoremap < <<
@@ -86,7 +80,7 @@ function! s:init_cmdwin()
 
   " Completion.
   inoremap <buffer><expr><TAB>  pumvisible() ?
-        \ "\<C-n>" : <SID>check_back_space() ? "\<TAB>" : "\<C-x>\<C-u>\<C-p>"
+        \ "\<C-n>" : "\<TAB>"
 
   " Remove history lines.
   silent execute printf("1,%ddelete _", min([&history - 20, line("$") - 20]))

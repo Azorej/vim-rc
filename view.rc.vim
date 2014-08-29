@@ -8,7 +8,7 @@ function! s:SID_PREFIX()
 endfunction
 
 " Show line number.
-"set number
+set number
 " Show <TAB> and <CR>
 set list
 if IsWindows()
@@ -20,8 +20,8 @@ endif
 set laststatus=2
 " Height of command line.
 set cmdheight=2
-" Not show command on statusline.
-set noshowcmd
+" Show command on statusline.
+set showcmd
 " Show title.
 set title
 " Title length.
@@ -80,57 +80,56 @@ let &statusline="%{winnr('$')>1?'['.winnr().'/'.winnr('$')"
 
 " Turn down a long line appointed in 'breakat'
 set linebreak
-set showbreak=\
+let &showbreak='↪ '
 set breakat=\ \	;:,!?
 " Wrap conditions.
-set whichwrap+=h,l,<,>,[,],b,s,~
-if exists('+breakindent')
-  set breakindent
-  set wrap
-else
-  set nowrap
-endif
+set whichwrap+=<,>,[,],b,s,~
+
+set wrap
 
 " Do not display greetings message at the time of Vim start.
 set shortmess=aTI
-
-" Don't create backup.
-set nowritebackup
-set nobackup
-set noswapfile
-set backupdir-=.
 
 " Disable bell.
 set t_vb=
 set novisualbell
 
 " Display candidate supplement.
-set nowildmenu
+set wildmenu
 set wildmode=list:longest,full
-" Increase history amount.
-set history=1000
+set wildignorecase
 " Display all the information of the tag by the supplement of the Insert mode.
 set showfulltag
 " Can supplement a tag in a command-line.
 set wildoptions=tagfile
 
+" Always show content after scroll
+set scrolloff=4
+" Minimum number of lines to scroll
+" set scrolljump=5
+
+
 " Disable menu
 let g:did_install_default_menus = 1
+
+" Enable folding.
+set foldenable
+" set foldmethod=expr
+set foldmethod=marker
+" Show folding level.
+set foldcolumn=1
+set fillchars=vert:\|
+set commentstring=%s
+
+if exists('*FoldCCtext')
+    " Use FoldCCtext().
+    set foldtext=FoldCCtext()
+endif
 
 if !&verbose
   " Enable spell check.
   set spelllang=en_us
-  " Enable CJK support.
-  set spelllang+=cjk
 endif
-
-" Completion setting.
-set completeopt=menuone
-" Don't complete from other buffer.
-set complete=.
-"set complete=.,w,b,i,t
-" Set popup menu max height.
-set pumheight=20
 
 " Report changes.
 set report=0
@@ -183,11 +182,13 @@ function! s:strwidthpart(str, width) "{{{
   return ret
 endfunction"}}}
 
+set cursorline
+
 if v:version >= 703
   " For conceal.
   set conceallevel=2 concealcursor=iv
 
-  set colorcolumn=79
+  set colorcolumn=0
 
   " Use builtin function.
   function! s:wcswidth(str)

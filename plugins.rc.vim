@@ -223,15 +223,6 @@ if neobundle#tap('vimfiler.vim') "{{{
   call neobundle#untap()
 endif "}}}
 
-if neobundle#tap('eskk.vim') "{{{
-  imap <C-j>     <Plug>(eskk:toggle)
-
-  let neobundle#hooks.on_source =
-        \ '~/.vim/rc/plugins/eskk.rc.vim'
-
-  call neobundle#untap()
-endif "}}}
-
 if neobundle#tap('J6uil.vim') "{{{
   function! neobundle#hooks.on_source(bundle)
     let g:J6uil_config_dir = expand('$CACHE/J6uil')
