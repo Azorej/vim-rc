@@ -48,10 +48,10 @@ endif "}}}
 
 if neobundle#tap('vimshell.vim') "{{{
   " <C-Space>: switch to vimshell.
-  nmap <C-@>  <Plug>(vimshell_switch)
+  nmap [Shell]e <Plug>(vimshell_switch)
   nnoremap !  q:VimShellExecute<Space>
-  nnoremap [Space]i  q:VimShellInteractive<Space>
-  nnoremap [Space]t  q:VimShellTerminal<Space>
+  nnoremap [Shell]i  q:VimShellInteractive<Space>
+  nnoremap [Shell]t  q:VimShellTerminal<Space>
 
   let neobundle#hooks.on_source =
         \ '~/.vim/rc/plugins/vimshell.rc.vim'

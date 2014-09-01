@@ -2,11 +2,6 @@
 " Initialize:
 "
 
-if exists('&regexpengine')
-  " Use old regexp engine.
-  " set regexpengine=1
-endif
-
 " Use English interface.
 if IsWindows()
   " For Windows.
@@ -30,6 +25,18 @@ nnoremap m  <Nop>
 xnoremap m  <Nop>
 nnoremap ,  <Nop>
 xnoremap ,  <Nop>
+
+" Smart space mapping.
+" Notice: when starting other <Space> mappings in noremap, disappeared [Space].
+nmap  <Space>   [Space]
+xmap  <Space>   [Space]
+nnoremap  [Space]   <Nop>
+xnoremap  [Space]   <Nop>
+
+nmap <C-@>  [Shell]
+cmap <C-@>  [Shell]
+nnoremap [Shell] <Nop>
+cnoremap [Shell] <Nop>
 
 if IsWindows()
   " Exchange path separator.
@@ -65,9 +72,7 @@ if has('vim_starting') "{{{
     execute 'set runtimepath^=' . finddir('neobundle.vim', '.;')
   elseif &runtimepath !~ '/neobundle.vim'
     if !isdirectory(s:neobundle_dir.'/neobundle.vim')
-      execute printf('!git clone %s://github.com/Shougo/neobundle.vim.git',
-            \ (exists('$http_proxy') ? 'https' : 'git'))
-            \ s:neobundle_dir.'/neobundle.vim'
+	call s:clone_github_rep('Shougo/neobundle.vim.get', s:neobundle_dir.'/neobundle.vim')
     endif
 
     execute 'set runtimepath^=' . s:neobundle_dir.'/neobundle.vim'

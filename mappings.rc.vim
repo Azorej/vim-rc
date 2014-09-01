@@ -2,10 +2,6 @@
 " Key-mappings:
 "
 
-" Use <C-Space>.
-nmap <C-Space>  <C-@>
-cmap <C-Space>  <C-@>
-
 " Indent
 nnoremap > >>
 nnoremap < <<
@@ -90,12 +86,6 @@ function! s:init_cmdwin()
 endfunction"}}}
 
 " [Space]: Other useful commands "{{{
-" Smart space mapping.
-" Notice: when starting other <Space> mappings in noremap, disappeared [Space].
-nmap  <Space>   [Space]
-xmap  <Space>   [Space]
-nnoremap  [Space]   <Nop>
-xnoremap  [Space]   <Nop>
 
 " Toggle relativenumber.
 nnoremap <silent> [Space].
@@ -317,12 +307,12 @@ endfunction"}}}
 nnoremap [Alt]   <Nop>
 xnoremap [Alt]   <Nop>
 onoremap [Alt]   <Nop>
-nmap    e  [Alt]
-xmap    e  [Alt]
-omap    e  [Alt]
-
-nnoremap    [Alt]e   e
-xnoremap    [Alt]e   e
+" nmap    e  [Alt]
+" xmap    e  [Alt]
+" omap    e  [Alt]
+"
+" nnoremap    [Alt]e   e
+" xnoremap    [Alt]e   e
 
 " Indent paste.
 nnoremap <silent> [Alt]p o<Esc>pm``[=`]``^

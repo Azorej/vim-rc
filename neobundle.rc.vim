@@ -344,3 +344,5 @@ NeoBundleLazy 'Shougo/javacomplete', {
 NeoBundleLazy 'osyo-manga/vim-jplus', {
       \ 'mappings' : '<Plug>'
       \ }
+
+NeoBundle 'Azorej/vim-simpledb'
