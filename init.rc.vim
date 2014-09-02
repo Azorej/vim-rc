@@ -38,6 +38,12 @@ cmap <C-@>  [Shell]
 nnoremap [Shell] <Nop>
 cnoremap [Shell] <Nop>
 
+nmap <C-t>  [Toggle]
+nnoremap [Toggle] <Nop>
+
+nnoremap    [Window]   <Nop>
+nmap    <C-w> [Window]
+
 if IsWindows()
   " Exchange path separator.
   set shellslash

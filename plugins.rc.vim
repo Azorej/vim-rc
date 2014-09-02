@@ -82,21 +82,27 @@ if neobundle#tap('unite.vim') "{{{
         \ :<C-u>UniteWithCursorWord -buffer-name=tag tag tag/include<CR>
   xnoremap <silent> ;r
         \ d:<C-u>Unite -buffer-name=register register history/yank<CR>
-  nnoremap <silent> <C-k>
-        \ :<C-u>Unite change jump<CR>
+  " nnoremap <silent> <C-k>
+  "       \ :<C-u>Unite change jump<CR>
   nnoremap <silent><expr> ;g
         \ ":\<C-u>Unite grep -buffer-name=grep%".tabpagenr()." -auto-preview -no-split -no-empty -resume\<CR>"
   nnoremap <silent> ;r
         \ :<C-u>Unite -buffer-name=register register history/yank<CR>
 
-  " <C-t>: Tab pages
-  nnoremap <silent><expr> <C-t>
-        \ ":\<C-u>Unite -auto-resize -select=".(tabpagenr()-1)." tab\<CR>"
+  noremap zu :<C-u>Unite outline:foldings<CR>
 
-  nnoremap <silent> [Window]s
-        \ :<C-u>Unite -buffer-name=files -no-split -multi-line -unique -silent
-        \ jump_point file_point file_mru
-        \ file_rec/git buffer_tab:- file file/new<CR>
+  " Easily syntax change.
+  nmap <Leader>ft <SID>(change_file_type)
+  noremap <silent> <SID>(change_file_type) :<C-u>Unite -start-insert filetype filetype/new<CR>
+
+  " <C-t>: Tab pages
+  " nnoremap <silent><expr> <C-t>
+  "       \ ":\<C-u>Unite -auto-resize -select=".(tabpagenr()-1)." tab\<CR>"
+
+  " nnoremap <silent> [Window]s
+  "       \ :<C-u>Unite -buffer-name=files -no-split -multi-line -unique -silent
+  "       \ jump_point file_point file_mru
+  "       \ file_rec/git buffer_tab:- file file/new<CR>
 
   nnoremap <expr><silent> [Window]r  ":\<C-u>Unite -start-insert ref/".ref#detect()."\<CR>"
   nnoremap <silent> [Window]<Space>  :<C-u>Unite -buffer-name=files file_rec:~/.vim/rc<CR>
@@ -123,7 +129,7 @@ if neobundle#tap('unite.vim') "{{{
   "}}}
 
   " Execute help.
-  nnoremap <silent> <C-h>  :<C-u>Unite -buffer-name=help help<CR>
+  "nnoremap <silent> <C-h>  :<C-u>Unite -buffer-name=help help<CR>
 
   " Execute help by cursor keyword.
   nnoremap <silent> g<C-h>  :<C-u>UniteWithCursorWord help<CR>
@@ -149,7 +155,7 @@ if neobundle#tap('unite.vim') "{{{
   nnoremap <silent><expr> n
         \ ":\<C-u>UniteResume search%".bufnr('%')." -no-start-insert\<CR>"
 
-  nnoremap <silent> <C-w>  :<C-u>Unite -auto-resize window/gui<CR>
+  "nnoremap <silent> <C-w>  :<C-u>Unite -auto-resize window/gui<CR>
 
   let neobundle#hooks.on_source =
         \ '~/.vim/rc/plugins/unite.rc.vim'
