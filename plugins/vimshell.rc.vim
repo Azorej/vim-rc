@@ -30,7 +30,7 @@ function! s:vimshell_settings()
     "let g:vimshell_prompt = $USER."% "
 
     " Use zsh history.
-    let g:vimshell_external_history_path = expand('~/.zsh-history')
+    " let g:vimshell_external_history_path = expand('~/.zsh-history')
 
     call vimshell#set_execute_file('bmp,jpg,png,gif', 'gexe eog')
     call vimshell#set_execute_file('mp3,m4a,ogg', 'gexe amarok')

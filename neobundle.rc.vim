@@ -12,6 +12,7 @@ NeoBundleLazy 'Shougo/echodoc.vim', {
       \ 'insert' : 1
       \ }
 
+" TODO enable neocomplcache if Lua disabled
 " NeoBundle 'Shougo/neocomplcache.vim', {
       " \ 'insert' : 1
       " \ }
@@ -120,11 +121,6 @@ NeoBundleLazy 'mattn/webapi-vim'
 NeoBundleLazy 'add20/vim-conque', {
       \ 'commands' : 'ConqueTerm'
       \ }
-NeoBundleLazy 'thinca/vim-fontzoom', {
-      \ 'gui' : 1,
-      \ 'autoload' : {
-      \  'mappings' : '<Plug>'
-      \ }}
 NeoBundleLazy 'thinca/vim-prettyprint', {
       \ 'commands' : 'PP'
       \ }
@@ -135,9 +131,9 @@ NeoBundleLazy 'thinca/vim-quickrun', {
       \ 'commands' : 'QuickRun',
       \ 'mappings' : '<Plug>'
       \ }
-NeoBundleLazy 'thinca/vim-scouter', {
-      \ 'commands' : 'Scouter'
-      \ }
+" NeoBundleLazy 'thinca/vim-scouter', {
+"       \ 'commands' : 'Scouter'
+"       \ }
 NeoBundleLazy 'thinca/vim-ref', {
       \ 'commands' : 'Ref',
       \ 'unite_sources' : 'ref',
@@ -148,17 +144,17 @@ NeoBundleLazy 'vim-ruby/vim-ruby', {
       \ 'filetypes' : 'ruby'
       \ }
 
-NeoBundleLazy 'basyura/J6uil.vim', {
-      \ 'lazy' : 1,
-      \ 'autoload' : {
-      \   'commands' : {
-      \      'name' : 'J6uil',
-      \      'complete' : 'custom,J6uil#complete#room'},
-      \   'function_prefix' : 'J6uil',
-      \   'unite_sources' : 'J6uil',
-      \ },
-      \ 'depends' : 'mattn/webapi-vim',
-      \ }
+" NeoBundleLazy 'basyura/J6uil.vim', {
+"       \ 'lazy' : 1,
+"       \ 'autoload' : {
+"       \   'commands' : {
+"       \      'name' : 'J6uil',
+"       \      'complete' : 'custom,J6uil#complete#room'},
+"       \   'function_prefix' : 'J6uil',
+"       \   'unite_sources' : 'J6uil',
+"       \ },
+"       \ 'depends' : 'mattn/webapi-vim',
+"       \ }
 
 NeoBundleLazy 'Shougo/unite-help'
 NeoBundleLazy 'tsukkee/unite-tag'
@@ -168,24 +164,11 @@ NeoBundleLazy 'tyru/caw.vim', {
 NeoBundleLazy 'tyru/open-browser.vim', {
       \ 'mappings' : '<Plug>',
       \ }
-NeoBundleLazy 'tyru/restart.vim', {
-      \ 'gui' : 1,
-      \ 'autoload' : {
-      \  'commands' : 'Restart'
-      \ }}
-NeoBundleLazy 'tyru/winmove.vim', {
-      \ 'mappings' : '<Plug>',
-      \ 'gui' : 1,
-      \ 'augroup' : 'winmove',
-      \ }
 NeoBundleLazy 'ujihisa/neco-ghc', {
       \ 'filetypes' : 'haskell'
       \ }
 NeoBundleLazy 'ujihisa/neco-look'
 NeoBundleLazy 'ujihisa/unite-colorscheme'
-NeoBundleLazy 'vim-jp/vimdoc-ja', {
-      \ 'filetype' : 'help',
-      \ }
 " NeoBundleLazy 'eignn/netrw.vim', {
       " \ 'commands' : 'Explore',
       " \ }
@@ -223,9 +206,6 @@ NeoBundleLazy 'jelera/vim-javascript-syntax', {
       \ }
 NeoBundleLazy 'hynek/vim-python-pep8-indent', {
       \ 'filetypes' : 'python',
-      \ }
-NeoBundleLazy 'bkad/CamelCaseMotion', {
-      \ 'mappings' : '<Plug>',
       \ }
 NeoBundleLazy 'aharisu/vim-gdev', {
       \ 'filetypes' : 'scheme',
@@ -346,3 +326,11 @@ NeoBundleLazy 'osyo-manga/vim-jplus', {
       \ }
 
 NeoBundle 'Azorej/vim-simpledb'
+
+" {{{ Language specific plugins
+    " {{{ C++
+	NeoBundleLazy 'derekwyatt/vim-fswitch', {
+		    \ 'filetypes' : 'cpp'
+		    \ }
+    " }}}
+" }}}

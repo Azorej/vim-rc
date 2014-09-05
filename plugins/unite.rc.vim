@@ -192,7 +192,7 @@ elseif executable('jvgrep')
 elseif executable('ack-grep')
   " For ack.
   let g:unite_source_grep_command = 'ack-grep'
-  let g:unite_source_grep_default_opts = '-i --no-heading --no-color -a'
+  let g:unite_source_grep_default_opts = '-i --no-heading --no-color'
   let g:unite_source_grep_recursive_opt = ''
 endif
 

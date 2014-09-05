@@ -4,8 +4,8 @@
 
 " changelog.vim"{{{
 autocmd MyAutoCmd BufNewFile,BufRead *.changelog setf changelog
-let g:changelog_timeformat = "%Y-%m-%d"
-let g:changelog_username = "Shougo "
+let g:changelog_dateformat = "%Y-%m-%d"
+let g:changelog_username = "Azorej "
 "}}}
 
 " python.vim
@@ -66,6 +66,12 @@ if neobundle#tap('vinarise.vim') "{{{
 endif "}}}
 
 if neobundle#tap('unite.vim') "{{{
+
+  nnoremap <silent><expr> [Space]s
+        \ ":\<C-u>Unite grep -buffer-name=grep%".tabpagenr()." -auto-preview -no-split -no-empty \<CR>"
+  nnoremap <silent><expr> [Space]r
+        \ ":\<C-u>UniteResume \<CR>"
+
   " The prefix key.
   nnoremap    [unite]   <Nop>
   xnoremap    [unite]   <Nop>
@@ -84,8 +90,6 @@ if neobundle#tap('unite.vim') "{{{
         \ d:<C-u>Unite -buffer-name=register register history/yank<CR>
   " nnoremap <silent> <C-k>
   "       \ :<C-u>Unite change jump<CR>
-  nnoremap <silent><expr> ;g
-        \ ":\<C-u>Unite grep -buffer-name=grep%".tabpagenr()." -auto-preview -no-split -no-empty -resume\<CR>"
   nnoremap <silent> ;r
         \ :<C-u>Unite -buffer-name=register register history/yank<CR>
 
@@ -119,7 +123,7 @@ if neobundle#tap('unite.vim') "{{{
   " t: tags-and-searches "{{{
   " The prefix key.
   nnoremap    [Tag]   <Nop>
-  nmap    t [Tag]
+  " nmap    t [Tag]
   " Jump.
   " nnoremap [Tag]t  g<C-]>
   nnoremap <silent><expr> [Tag]t  &filetype == 'help' ?  "g\<C-]>" :
@@ -159,17 +163,6 @@ if neobundle#tap('unite.vim') "{{{
 
   let neobundle#hooks.on_source =
         \ '~/.vim/rc/plugins/unite.rc.vim'
-
-  call neobundle#untap()
-endif "}}}
-
-if neobundle#tap('CamelCaseMotion') "{{{
-  nmap <silent> W <Plug>CamelCaseMotion_w
-  xmap <silent> W <Plug>CamelCaseMotion_w
-  omap <silent> W <Plug>CamelCaseMotion_w
-  nmap <silent> B <Plug>CamelCaseMotion_b
-  xmap <silent> B <Plug>CamelCaseMotion_b
-  omap <silent> B <Plug>CamelCaseMotion_b
 
   call neobundle#untap()
 endif "}}}
@@ -229,42 +222,42 @@ if neobundle#tap('vimfiler.vim') "{{{
   call neobundle#untap()
 endif "}}}
 
-if neobundle#tap('J6uil.vim') "{{{
-  function! neobundle#hooks.on_source(bundle)
-    let g:J6uil_config_dir = expand('$CACHE/J6uil')
-    let g:J6uil_no_default_keymappings = 1
-    let g:J6uil_display_offline  = 0
-    let g:J6uil_display_online   = 0
-    let g:J6uil_echo_presence    = 1
-    let g:J6uil_display_icon     = 1
-    let g:J6uil_display_interval = 0
-    let g:J6uil_updatetime       = 1000
-    let g:J6uil_align_message    = 0
-
-    silent! delcommand NeoComplCacheCachingBuffer
-
-    autocmd MyAutoCmd FileType J6uil call s:j6uil_settings()
-    autocmd MyAutoCmd FileType J6uil_say call s:j6uil_say_settings()
-
-    function! s:j6uil_settings()
-      setlocal wrap
-      setlocal nofoldenable
-      setlocal foldcolumn=0
-      nmap <buffer> o <Plug>(J6uil_open_say_buffer)
-      nmap <silent> <buffer> <CR> <Plug>(J6uil_action_enter)
-      call neocomplete#initialize()
-      NeoCompleteBufferMakeCache
-    endfunction
-
-    function! s:j6uil_say_settings()
-      setlocal wrap
-      setlocal nofoldenable
-      setlocal foldcolumn=0
-    endfunction
-  endfunction
-
-  call neobundle#untap()
-endif "}}}
+" if neobundle#tap('J6uil.vim') "{{{
+"   function! neobundle#hooks.on_source(bundle)
+"     let g:J6uil_config_dir = expand('$CACHE/J6uil')
+"     let g:J6uil_no_default_keymappings = 1
+"     let g:J6uil_display_offline  = 0
+"     let g:J6uil_display_online   = 0
+"     let g:J6uil_echo_presence    = 1
+"     let g:J6uil_display_icon     = 1
+"     let g:J6uil_display_interval = 0
+"     let g:J6uil_updatetime       = 1000
+"     let g:J6uil_align_message    = 0
+"
+"     silent! delcommand NeoComplCacheCachingBuffer
+"
+"     autocmd MyAutoCmd FileType J6uil call s:j6uil_settings()
+"     autocmd MyAutoCmd FileType J6uil_say call s:j6uil_say_settings()
+"
+"     function! s:j6uil_settings()
+"       setlocal wrap
+"       setlocal nofoldenable
+"       setlocal foldcolumn=0
+"       nmap <buffer> o <Plug>(J6uil_open_say_buffer)
+"       nmap <silent> <buffer> <CR> <Plug>(J6uil_action_enter)
+"       call neocomplete#initialize()
+"       NeoCompleteBufferMakeCache
+"     endfunction
+"
+"     function! s:j6uil_say_settings()
+"       setlocal wrap
+"       setlocal nofoldenable
+"       setlocal foldcolumn=0
+"     endfunction
+"   endfunction
+"
+"   call neobundle#untap()
+" endif "}}}
 
 if neobundle#tap('vim-operator-surround') "{{{
   nmap <silent>sa <Plug>(operator-surround-append)a
@@ -339,7 +332,7 @@ if neobundle#tap('vim-vcs') "{{{
 endif "}}}
 
 if neobundle#tap('vim-choosewin') "{{{
-  nmap g<C-w>  <Plug>(choosewin)
+  map [Window]n  <Plug>(choosewin)
   let g:choosewin_overlay_enable = 1
   let g:choosewin_overlay_clear_multibyte = 1
   let g:choosewin_blink_on_land = 0
@@ -362,22 +355,8 @@ if neobundle#tap('vim-conque') "{{{
   call neobundle#untap()
 endif "}}}
 
-if neobundle#tap('fontzoom.vim') "{{{
-  nmap + <Plug>(fontzoom-larger)
-  nmap _ <Plug>(fontzoom-smaller)
-
-  call neobundle#untap()
-endif "}}}
-
 if neobundle#tap('vim-operator-replace') "{{{
   xmap p <Plug>(operator-replace)
-
-  call neobundle#untap()
-endif "}}}
-
-if neobundle#tap('restart.vim') "{{{
-  let g:restart_save_window_values = 0
-  nnoremap <silent> [Space]re  :<C-u>Restart<CR>
 
   call neobundle#untap()
 endif "}}}
@@ -389,17 +368,8 @@ if neobundle#tap('vim-niceblock') "{{{
   call neobundle#untap()
 endif "}}}
 
-if neobundle#tap('winmove.vim') "{{{
-  nmap <Up>      <Plug>(winmove-up)
-  nmap <Down>    <Plug>(winmove-down)
-  nmap <Left>    <Plug>(winmove-left)
-  nmap <Right>   <Plug>(winmove-right)
-
-  call neobundle#untap()
-endif "}}}
-
 if neobundle#tap('vim-fullscreen') "{{{
-  nmap <C-CR> <Plug>(fullscreen-toggle)
+  nmap <F12> <Plug>(fullscreen-toggle)
 
   call neobundle#untap()
 endif "}}}
@@ -422,16 +392,18 @@ endif "}}}
 
 if neobundle#tap('glowshi-ft.vim') "{{{
   let g:glowshi_ft_no_default_key_mappings = 1
-  map f <Plug>(glowshi-ft-f)
-  map F <Plug>(glowshi-ft-F)
+  map  f <Plug>(glowshi-ft-f)
+  map  F <Plug>(glowshi-ft-F)
+  map  t <Plug>(glowshi-ft-t)
+  map  T <Plug>(glowshi-ft-T)
 
-  let g:glowshi_ft_timeoutlen = 1000
+  let g:glowshi_ft_timeoutlen = 800
 
   call neobundle#untap()
 endif "}}}
 
 if neobundle#tap('junkfile.vim') "{{{
-  nnoremap <silent> [Window]e  :<C-u>Unite junkfile/new junkfile -start-insert<CR>
+  nnoremap <silent> [Window]j  :<C-u>Unite junkfile/new junkfile -start-insert<CR>
 
   call neobundle#untap()
 endif "}}}
@@ -441,4 +413,9 @@ if neobundle#tap('vim-jplus') "{{{
   vmap J <Plug>(jplus)
 
   call neobundle#untap()
+endif "}}}
+
+if neobundle#tap('vim-fswitch') "{{{
+    let g:fsnonewfiles = 1
+    autocmd MyAutoCmd FileType cpp nmap <silent><buffer> <S-TAB> :FSHere<cr>
 endif "}}}

@@ -120,7 +120,7 @@ inoremap <expr><C-x><C-f>
       \ neocomplete#start_manual_complete('file')
 
 inoremap <expr><C-g>     neocomplete#undo_completion()
-inoremap <expr><C-l>     neocomplete#complete_common_string()
+" inoremap <expr><C-l>     neocomplete#complete_common_string()
 
 " <CR>: close popup and save indent.
 inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
