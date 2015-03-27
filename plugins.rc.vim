@@ -72,6 +72,14 @@ if neobundle#tap('unite.vim') "{{{
   nnoremap <silent><expr> [Space]r
         \ ":\<C-u>UniteResume \<CR>"
 
+  nnoremap <silent> [Space]f :<C-u>Unite -toggle -no-split -start-insert -buffer-name=files file_rec/async:! <CR>
+  nnoremap <silent> [Space]b :<C-u>Unite -toggle -no-split -start-insert -buffer-name=buffers buffer_tab file_mru <CR>
+
+  " nnoremap <silent> [Space]f
+  "       \ :<C-u>Unite -buffer-name=files -no-split -multi-line -unique -silent
+  "       \ jump_point file_point file_mru
+  "       \ file_rec/git buffer_tab:- file file/new<CR>
+
   " The prefix key.
   nnoremap    [unite]   <Nop>
   xnoremap    [unite]   <Nop>
@@ -103,11 +111,6 @@ if neobundle#tap('unite.vim') "{{{
   " nnoremap <silent><expr> <C-t>
   "       \ ":\<C-u>Unite -auto-resize -select=".(tabpagenr()-1)." tab\<CR>"
 
-  " nnoremap <silent> [Window]s
-  "       \ :<C-u>Unite -buffer-name=files -no-split -multi-line -unique -silent
-  "       \ jump_point file_point file_mru
-  "       \ file_rec/git buffer_tab:- file file/new<CR>
-
   nnoremap <expr><silent> [Window]r  ":\<C-u>Unite -start-insert ref/".ref#detect()."\<CR>"
   nnoremap <silent> [Window]<Space>  :<C-u>Unite -buffer-name=files file_rec:~/.vim/rc<CR>
   nnoremap <silent> [Window]n  :<C-u>Unite -default-action=lcd neobundle:!<CR>
@@ -117,8 +120,8 @@ if neobundle#tap('unite.vim') "{{{
 
   nnoremap <silent> [Window]w
         \ :<C-u>Unite window<CR>
-  nnoremap <silent> [Space]b
-        \ :<C-u>UniteBookmarkAdd<CR>
+  " nnoremap <silent> [Space]b
+  "       \ :<C-u>UniteBookmarkAdd<CR>
 
   " t: tags-and-searches "{{{
   " The prefix key.

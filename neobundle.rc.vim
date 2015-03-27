@@ -334,3 +334,7 @@ NeoBundle 'Azorej/vim-simpledb'
 		    \ }
     " }}}
 " }}}
+
+" colorschemes
+NeoBundle 'tomasr/molokai'
+NeoBundle 'morhetz/gruvbox'
