@@ -68,7 +68,7 @@ endif "}}}
 if neobundle#tap('unite.vim') "{{{
 
   nnoremap <silent><expr> [Space]s
-        \ ":\<C-u>Unite grep -buffer-name=grep%".tabpagenr()." -auto-preview -no-split -no-empty \<CR>"
+        \ ":\<C-u>Unite grep -buffer-name=grep%".tabpagenr()." -auto-preview -no-empty \<CR>"
   nnoremap <silent><expr> [Space]r
         \ ":\<C-u>UniteResume \<CR>"
 
@@ -421,4 +421,26 @@ endif "}}}
 if neobundle#tap('vim-fswitch') "{{{
     let g:fsnonewfiles = 1
     autocmd MyAutoCmd FileType cpp nmap <silent><buffer> <S-TAB> :FSHere<cr>
+endif "}}}
+
+if neobundle#tap('vim-go') "{{{
+    autocmd FileType go nmap <leader>r <Plug>(go-run)
+    autocmd FileType go nmap <leader>b <Plug>(go-build)
+    autocmd FileType go nmap <leader>t <Plug>(go-test)
+    autocmd FileType go nmap <leader>c <Plug>(go-coverage)
+
+    autocmd FileType go nmap <Leader>gd <Plug>(go-def-vertical)
+    autocmd FileType go nmap <Leader>ds <Plug>(go-doc-vertical)
+    autocmd FileType go nmap <Leader>db <Plug>(go-doc-browser)
+
+    autocmd FileType go nmap <Leader>s <Plug>(go-implements)
+    autocmd FileType go nmap <Leader>i <Plug>(go-info)
+
+    autocmd FileType go nmap <Leader>e <Plug>(go-rename)
+
+    let g:go_highlight_functions = 1
+    let g:go_highlight_methods = 1
+    let g:go_highlight_structs = 1
+    let g:go_highlight_operators = 1
+    let g:go_highlight_build_constraints = 1
 endif "}}}

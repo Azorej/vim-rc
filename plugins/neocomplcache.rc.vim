@@ -2,6 +2,8 @@
 " neocomplache.vim
 "
 
+" Disable AutoComplPop.
+let g:acp_enableAtStartup = 0
 " Use smartcase.
 let g:neocomplcache_enable_smart_case = 0
 " Use camel case completion.

@@ -31,7 +31,6 @@ finally
   let &completeopt = completeopt_save
 endtry
 let g:neocomplete#enable_auto_select = 0
-let g:neocomplete#enable_refresh_always = 0
 let g:neocomplete#enable_cursor_hold_i = 0
 
 let g:neocomplete#sources#dictionary#dictionaries = {
@@ -46,7 +45,6 @@ let g:neocomplete#enable_auto_delimiter = 1
 let g:neocomplete#disable_auto_select_buffer_name_pattern =
       \ '\[Command Line\]'
 let g:neocomplete#max_list = 100
-let g:neocomplete#force_overwrite_completefunc = 1
 if !exists('g:neocomplete#sources#omni#input_patterns')
   let g:neocomplete#sources#omni#input_patterns = {}
 endif
@@ -58,8 +56,11 @@ if !exists('g:neocomplete#force_omni_input_patterns')
 endif
 let g:neocomplete#enable_auto_close_preview = 1
 
-" let g:neocomplete#force_omni_input_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::\w*'
-let g:neocomplete#sources#omni#input_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::\w*'
+let g:neocomplete#force_omni_input_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::\w*'
+" let g:neocomplete#sources#omni#input_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::\w*'
+
+let g:neocomplete#force_omni_input_patterns.python =
+\ '\%([^. \t]\.\|^\s*@\|^\s*from\s.\+import \|^\s*from \|^\s*import \)\w*'
 
 let g:neocomplete#sources#omni#functions.go =
       \ 'gocomplete#Complete'
@@ -105,8 +106,6 @@ inoremap <expr><C-b>  pumvisible() ? "\<PageUp>"   : "\<Left>"
 inoremap <expr><C-y>  pumvisible() ? neocomplete#close_popup() :  "\<C-r>\""
 " <C-e>: close popup.
 inoremap <expr><C-e>  pumvisible() ? neocomplete#cancel_popup() : "\<End>"
-" <C-k>: unite completion.
-imap <C-k>  <Plug>(neocomplete_start_unite_complete)
 " <C-h>, <BS>: close popup and delete backword char.
 inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
 inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
@@ -128,22 +127,4 @@ function! s:my_cr_function()
   return neocomplete#smart_close_popup() . "\<CR>"
 endfunction
 
-" <TAB>: completion.
-inoremap <silent><expr><TAB>  neocomplete#mappings#complete_common_string() != '' ?
-      \   neocomplete#mappings#complete_common_string() :
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ neocomplete#start_manual_complete()
-function! s:check_back_space() "{{{
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~ '\s'
-endfunction"}}}
-" <S-TAB>: completion back.
-inoremap <expr><S-TAB>  pumvisible() ? "\<C-p>" : "\<C-h>"
-
-" For cursor moving in insert mode(Not recommended)
-inoremap <expr><Left>  neocomplete#close_popup() . "\<Left>"
-inoremap <expr><Right> neocomplete#close_popup() . "\<Right>"
-inoremap <expr><Up>    neocomplete#close_popup() . "\<Up>"
-inoremap <expr><Down>  neocomplete#close_popup() . "\<Down>"
-"}}}
+let g:neocomplete#fallback_mappings = ["\<C-x>\<C-o>", "\<C-x>\<C-n>"]

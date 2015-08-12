@@ -118,9 +118,6 @@ NeoBundleLazy 'ctrlpvim/ctrlp.vim'
 NeoBundleLazy 'LeafCage/foldCC', {
       \ 'filetypes' : 'vim' }
 NeoBundleLazy 'mattn/webapi-vim'
-NeoBundleLazy 'add20/vim-conque', {
-      \ 'commands' : 'ConqueTerm'
-      \ }
 NeoBundleLazy 'thinca/vim-prettyprint', {
       \ 'commands' : 'PP'
       \ }
@@ -174,7 +171,6 @@ NeoBundleLazy 'ujihisa/unite-colorscheme'
       " \ }
 NeoBundleLazy 'osyo-manga/unite-quickfix'
 NeoBundleLazy 'osyo-manga/unite-filetype'
-NeoBundleLazy 'rbtnn/hexript.vim'
 NeoBundleLazy 'kana/vim-tabpagecd', {
       \ 'unite_sources' : 'tab'
       \ }

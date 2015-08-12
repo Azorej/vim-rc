@@ -8,6 +8,7 @@ inoremap <expr> , smartchr#one_of(', ', ',')
 inoremap <expr> =
       \ search('\(&\<bar><bar>\<bar>+\<bar>-\<bar>/\<bar>>\<bar><\) \%#', 'bcn')? '<bs>= '
       \ : search('\(*\<bar>!\)\%#', 'bcn') ? '= '
+      \ : search('\(*\<bar>:\)\%#', 'bcn') ? '= '
       \ : smartchr#one_of(' = ', '=', ' == ')
 augroup MyAutoCmd
   " Substitute .. into -> .

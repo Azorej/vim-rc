@@ -34,6 +34,7 @@ augroup MyAutoCmd
   endif
   "autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
   "autocmd FileType sql setlocal omnifunc=sqlcomplete#Complete
+  autocmd FileType sql setlocal omnifunc=
   autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
   autocmd FileType python setlocal foldmethod=indent
@@ -88,7 +89,7 @@ let g:SimpleJsIndenter_BriefMode = 1
 let g:SimpleJsIndenter_CaseIndentLevel = -1
 
 " Go
-if $GOROOT != ''
+if $GOPATH != ''
   set runtimepath+=$GOROOT/misc/vim
 endif
 
