@@ -2,6 +2,12 @@
 " Initialize:
 "
 
+function! s:clone_github_rep(url, path)
+      execute printf('!git clone %s://github.com/'.a:url,
+            \ (exists('$http_proxy') ? 'https' : 'git'))
+            \ a:path
+endfunction
+
 " Use English interface.
 if IsWindows()
   " For Windows.
@@ -78,7 +84,7 @@ if has('vim_starting') "{{{
     execute 'set runtimepath^=' . finddir('neobundle.vim', '.;')
   elseif &runtimepath !~ '/neobundle.vim'
     if !isdirectory(s:neobundle_dir.'/neobundle.vim')
-	call s:clone_github_rep('Shougo/neobundle.vim.get', s:neobundle_dir.'/neobundle.vim')
+	call s:clone_github_rep('Shougo/neobundle.vim.git', s:neobundle_dir.'/neobundle.vim')
     endif
 
     execute 'set runtimepath^=' . s:neobundle_dir.'/neobundle.vim'
